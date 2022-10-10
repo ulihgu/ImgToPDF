@@ -36,34 +36,36 @@ namespace ImgToPDF
             this.pathText = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.reloading = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(869, 1);
+            this.start.Location = new System.Drawing.Point(863, 2);
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(142, 23);
-            this.start.TabIndex = 0;
+            this.start.Size = new System.Drawing.Size(141, 23);
+            this.start.TabIndex = 2;
             this.start.Text = "生成PDF";
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // SelectImgPath
             // 
-            this.SelectImgPath.Location = new System.Drawing.Point(755, 2);
+            this.SelectImgPath.Location = new System.Drawing.Point(735, 2);
             this.SelectImgPath.Name = "SelectImgPath";
-            this.SelectImgPath.Size = new System.Drawing.Size(111, 23);
+            this.SelectImgPath.Size = new System.Drawing.Size(38, 23);
             this.SelectImgPath.TabIndex = 1;
-            this.SelectImgPath.Text = "浏览目录";
+            this.SelectImgPath.Text = "...";
             this.SelectImgPath.UseVisualStyleBackColor = true;
             this.SelectImgPath.Click += new System.EventHandler(this.SelectImgPath_Click);
             // 
             // pathText
             // 
-            this.pathText.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pathText.Location = new System.Drawing.Point(3, 2);
+            this.pathText.BackColor = System.Drawing.Color.White;
+            this.pathText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pathText.Location = new System.Drawing.Point(3, 3);
             this.pathText.Name = "pathText";
-            this.pathText.Size = new System.Drawing.Size(753, 21);
+            this.pathText.Size = new System.Drawing.Size(733, 21);
             this.pathText.TabIndex = 2;
             // 
             // listView1
@@ -83,20 +85,32 @@ namespace ImgToPDF
             this.imageList1.ImageSize = new System.Drawing.Size(100, 100);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // reloading
+            // 
+            this.reloading.Location = new System.Drawing.Point(772, 2);
+            this.reloading.Name = "reloading";
+            this.reloading.Size = new System.Drawing.Size(92, 23);
+            this.reloading.TabIndex = 5;
+            this.reloading.Text = "刷新";
+            this.reloading.UseVisualStyleBackColor = true;
+            this.reloading.Click += new System.EventHandler(this.reloading_Click);
+            // 
             // PDFMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 555);
+            this.Controls.Add(this.reloading);
+            this.Controls.Add(this.SelectImgPath);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.pathText);
-            this.Controls.Add(this.SelectImgPath);
             this.Controls.Add(this.start);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PDFMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "图片转PDF文件工具";
+            this.Shown += new System.EventHandler(this.PDFMain_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,6 +123,7 @@ namespace ImgToPDF
         private System.Windows.Forms.TextBox pathText;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button reloading;
     }
 }
 

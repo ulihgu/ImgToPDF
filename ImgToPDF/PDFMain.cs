@@ -17,7 +17,7 @@ namespace ImgToPDF
     {
         public PDFMain()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
         List<string> imageLists = new List<string>();
 
@@ -171,6 +171,10 @@ namespace ImgToPDF
 
         private void SelectImgPath_Click(object sender, EventArgs e)
         {
+            SelectImgPathBut();
+        }
+        private void SelectImgPathBut()
+        {
             try
             {
                 FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -196,7 +200,6 @@ namespace ImgToPDF
 
             }
         }
-
         private void startBut_Click(object sender, EventArgs e)
         {
             /*if (pathText.Text.Trim() == "") return;
@@ -243,6 +246,27 @@ namespace ImgToPDF
                 seeImg.ImgPath = pathText.Text+"\\"+ info.Item.Text;
                 seeImg.ShowDialog();
             }
+        }
+
+        private void reloading_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(pathText.Text))
+            {
+                imageList1.Images.Clear();
+                listView1.Items.Clear();
+                imageLists.Clear();
+                //刷新Listview
+                bindListView();
+            }
+            else
+            {
+                MessageBox.Show("目录不存在："+pathText.Text);
+            }
+        }
+
+        private void PDFMain_Shown(object sender, EventArgs e)
+        {
+            SelectImgPathBut();
         }
     }
 }
